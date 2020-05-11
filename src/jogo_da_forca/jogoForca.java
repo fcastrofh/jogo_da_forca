@@ -190,7 +190,7 @@ public class jogoForca {
 	    s = new Scanner(System.in);
 	   
 	    for(int i = 0; i < randomElement.length(); i++) {
-	    System.out.print("_ ");
+	    	System.out.print("_ ");
 	    }
 	    
 	    char[] chAux = new char[randomElement.length()];
@@ -204,29 +204,46 @@ public class jogoForca {
 	    for (int i = 0; i < chAux.length; i++) {
     		chAux2[count] = "_".charAt(0);
     		chAux2[count+1] = " ".charAt(0);
-    		count = count + 2;;
+    		count = count + 2;
 	    }
 	    
-	    while(true) {
+	    int erros = 0;
+	    while(erros < 3) {
 		    System.out.println();
 		    System.out.println("Entre com uma letra:");
 		    
 		    String letra = s.nextLine();
 		    
 		    int count2 = 0;
+		    
+		    boolean laco = false;
 		    for (char c : chAux) {
 		    	if (Character.toString(c).equals(letra)) {
 		    		if(Character.toString(chAux2[count2]).equals("_")) {
 			    		chAux2[count2] = letra.charAt(0);
 			    		chAux2[count2+1] = " ".charAt(0);
+			    		laco = true;
 		    		}
 		    	}
 		    	count2 = count2 + 2;
 	        }
 		    
-	        for (char c : chAux2) { 
-	            System.out.print(c); 
-	        }
+		    if(!laco) {
+		    	erros = erros + 1;
+		    	System.out.println("Errou! faltam "+ (3-erros) +" tentativas!");
+		    	System.out.println();
+		    }
+		    
+		    if(erros == 3) {
+		    	System.out.print("A palava era ");
+		    	for (char c : chAux) { 
+		            System.out.print(c); 
+		        }
+		    } else {
+		        for (char c : chAux2) { 
+		            System.out.print(c); 
+		        }
+		    }
 	    }
 	}    
 
