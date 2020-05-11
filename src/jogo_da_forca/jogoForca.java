@@ -234,15 +234,28 @@ public class jogoForca {
 		    	System.out.println();
 		    }
 		    
+		    boolean quebrar = true;
 		    if(erros == 3) {
 		    	System.out.print("A palava era ");
 		    	for (char c : chAux) { 
 		            System.out.print(c); 
 		        }
+		    	quebrar = false;
 		    } else {
+		    	int count3 = 0;
 		        for (char c : chAux2) { 
-		            System.out.print(c); 
+		        	System.out.print(c);
+		            if(Character.toString(chAux2[count3]).equals("_")) {
+		            	quebrar = false;
+		            }
+		            count3 = count3 + 1;
 		        }
+		    }
+		    
+		    if(quebrar) {
+		    	System.out.println();
+		    	System.out.println("Parabens! Fim do jogo!");
+		    	break;
 		    }
 	    }
 	}    
